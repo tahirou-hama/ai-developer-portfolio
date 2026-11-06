@@ -1,6 +1,6 @@
-
 import express from 'express';
 import cors from 'cors';
+import helmet from 'helmet';
 
 import contactRoutes from './routes/contactRoutes.js';
 import adminAuthRoutes from './routes/adminAuthRoutes.js';
@@ -10,7 +10,9 @@ import {
     contactRateLimiter
 } from './middleware/publicRateLimiter.js';
 
+
 const app = express();
+app.use(helmet());
 
 const configuredOrigins = process.env.CLIENT_URL
     ? process.env.CLIENT_URL.split(',').map(origin => origin.trim()).filter(Boolean)
@@ -27,10 +29,12 @@ const allowedOrigins = [
 
 app.use(
     cors({
-        origin: allowedOrigins
+        origin: allowedOrigins,
+        methods: ['GET', 'POST', 'PATCH', 'DELETE'],
+        allowedHeaders: ['Content-Type', 'Authorization'],
+        optionsSuccessStatus: 204
     })
 );
-
 app.use(express.json({ limit: '20kb' }));
 
 app.get('/api/health', (req, res) => {
