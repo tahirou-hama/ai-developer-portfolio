@@ -1,8 +1,9 @@
+import { API_BASE_URL } from './api.js';
 
-const API_BASE_URL = 'http://localhost:5000/api/admin';
+const ADMIN_API_URL = `${API_BASE_URL}/api/admin`;
 
 export async function adminLogin(email, password) {
-    const response = await fetch(`${API_BASE_URL}/auth/login`, {
+    const response = await fetch(`${ADMIN_API_URL}/auth/login`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -20,7 +21,7 @@ export async function adminLogin(email, password) {
 }
 
 export async function verifyAdminSession(token) {
-    const response = await fetch(`${API_BASE_URL}/auth/me`, {
+    const response = await fetch(`${ADMIN_API_URL}/auth/me`, {
         method: 'GET',
         headers: {
             Authorization: `Bearer ${token}`
@@ -38,7 +39,7 @@ export async function verifyAdminSession(token) {
 
 
 export async function getAdminMessages(token) {
-    const response = await fetch(`${API_BASE_URL}/messages`, {
+    const response = await fetch(`${ADMIN_API_URL}/messages`, {
         method: 'GET',
         headers: {
             Authorization: `Bearer ${token}`
@@ -61,7 +62,7 @@ export async function getAdminMessages(token) {
 
 export async function updateAdminMessageReadStatus(token, messageId, isRead) {
     const response = await fetch(
-        `${API_BASE_URL}/messages/${messageId}/read-status`,
+        `${ADMIN_API_URL}/messages/${messageId}/read-status`,
         {
             method: 'PATCH',
             headers: {

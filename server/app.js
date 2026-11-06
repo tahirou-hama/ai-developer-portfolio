@@ -12,9 +12,22 @@ import {
 
 const app = express();
 
+const configuredOrigins = process.env.CLIENT_URL
+    ? process.env.CLIENT_URL.split(',').map(origin => origin.trim()).filter(Boolean)
+    : [];
+
+const allowedOrigins = [
+    ...new Set([
+        ...configuredOrigins,
+        ...(process.env.NODE_ENV !== 'production'
+            ? ['http://localhost:5173']
+            : [])
+    ])
+];
+
 app.use(
     cors({
-        origin: 'http://localhost:5173'
+        origin: allowedOrigins
     })
 );
 
