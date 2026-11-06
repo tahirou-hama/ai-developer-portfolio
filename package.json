@@ -3,14 +3,15 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "server": "node server/server.js",
-    "server:dev": "nodemon server/server.js",
-    "build": "vite build",
-    "lint": "eslint .",
-    "preview": "vite preview"
-  },
+ "scripts": {
+  "dev": "vite",
+  "start": "node server/server.js",
+  "server": "node server/server.js",
+  "server:dev": "nodemon server/server.js",
+  "build": "vite build",
+  "lint": "eslint .",
+  "preview": "vite preview"
+},
   "dependencies": {
     "axios": "^1.20.0",
     "bcryptjs": "^3.0.3",
