@@ -20,6 +20,7 @@ export async function adminLogin(email, password) {
     return data;
 }
 
+
 export async function verifyAdminSession(token) {
     const response = await fetch(`${ADMIN_API_URL}/auth/me`, {
         method: 'GET',
@@ -31,11 +32,16 @@ export async function verifyAdminSession(token) {
     const data = await response.json();
 
     if (!response.ok) {
-        throw new Error(data.message || 'Your session is invalid.');
+        const error = new Error(
+            data.message || 'Your session is invalid.'
+        );
+        error.status = response.status;
+        throw error;
     }
 
     return data;
 }
+
 
 
 export async function getAdminMessages(token) {
