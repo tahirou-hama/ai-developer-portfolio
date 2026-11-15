@@ -58,7 +58,9 @@ export async function submitContactForm(req, res) {
 
         insertResult = result;
     } catch (error) {
-        console.error('Contact message database error:', error.message);
+        console.error('Contact message database operation failed.', {
+            errorName: error.name
+        });
 
         return res.status(500).json({
             success: false,
@@ -82,7 +84,9 @@ export async function submitContactForm(req, res) {
             notificationSent: true
         });
     } catch (error) {
-        console.error('Contact notification error:', error.message);
+        console.error('Contact notification delivery failed.', {
+            errorName: error.name
+        });
 
         // The message remains saved even if email delivery fails.
         return res.status(201).json({
