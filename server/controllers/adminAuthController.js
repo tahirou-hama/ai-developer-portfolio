@@ -1,4 +1,3 @@
-
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 
@@ -72,7 +71,9 @@ export async function loginAdmin(req, res) {
             }
         });
     } catch (error) {
-        console.error('Admin login error:', error.message);
+        console.error('Admin login operation failed.', {
+            errorName: error.name
+        });
 
         return res.status(500).json({
             success: false,
@@ -80,7 +81,6 @@ export async function loginAdmin(req, res) {
         });
     }
 }
-
 
 export function getCurrentAdmin(req, res) {
     return res.status(200).json({
