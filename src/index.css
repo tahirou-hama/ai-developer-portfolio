@@ -274,43 +274,6 @@ HERO
   border-color: #6366f1;
 }
 
-.social-Links {
-  display: flex;
-
-  gap: 12px;
-
-  margin-top: 30px;
-}
-
-.social-links a {
-  width: 40px;
-  height: 40px;
-
-  display: flex;
-
-  align-items: center;
-justify-content: center;
-
-border: 1px solid #334155;
-
-border-radius: 8px;
-
-color: #94a3b8;
-
-transition:
-     color 0.2s ease,
-     border-color 0.2s ease,
-     transform 0.2s ease;
-}
-
-.social-links a:hover {
-  color: #f8fafc;
-
-  border-color: #6366f1;
-
-  transform: translateY(-2px);
-}
-
 
 /* ================= SOCIAL LINKS ================= */
 
@@ -328,14 +291,17 @@ transition:
     align-items: center;
     justify-content: center;
     gap: 10px;
+
     min-width: 125px;
+    min-height: 52px;
     padding: 12px 18px;
+    box-sizing: border-box;
 
     color: #e2e8f0;
     background: rgba(255, 255, 255, 0.04);
 
     border: 1px solid rgba(148, 163, 184, 0.25);
-    border-radius: 8px;
+    border-radius: 10px;
 
     font-size: 14px;
     font-weight: 600;
@@ -363,13 +329,19 @@ transition:
 @media (max-width: 480px) {
     .social-links {
         gap: 10px;
+        width: 100%;
     }
 
     .social-link {
+        flex: 1 1 0;
         min-width: 0;
-        padding: 10px 14px;
+        min-height: 52px;
+        padding: 12px 10px;
+        gap: 8px;
+        font-size: 13px;
     }
 }
+
 
 
 /* ============================
